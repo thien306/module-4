@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+</head>
+<body>
+<h2>Library</h2>
+<table id="products">
+    <thead>
+    <tr>
+
+        <th>STT</th>
+        <th>Book Name</th>
+        <th>Amount</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row,status : ${books}">
+        <td th:text="${status.count}"></td>
+        <td th:text="${row.bookName}"></td>
+        <td th:text="${row.count}"></td>
+
+        <td><a th:href="@{/book/{id}/borrow(id=${row.id})}">Borrow</a></td>
+        <td><a th:href="@{/book/{id}/giveBack(id=${row.id})}">Give Back</a></td>
+
+    </tr>
+    </tbody>
+</table>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title th:text="${user.title}"></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <form id="search-user">
+        <input type="text" id="search-input" th:placeholder="#{user.search}">
+        <button type="submit" th:text="#{user.search}" data-text="#{user.search}">Search</button>
+    </form>
+
+    <form id="add-user">
+        <h1 th:text="#{user.formCreate}">Form create</h1>
+        <table>
+            <tr>
+                <td th:text="#{user.name}"><label for="create-name">Name </label></td>
+                <td><input type="text" id="create-name" placeholder="create-name"></td>
+            </tr>
+            <tr>
+                <td th:text="#{user.address}"><label for="create-address" >Address </label></td>
+                <td><input type="text" id="create-address" placeholder="create-address"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td th:value="#{user.add}"><input type="submit"  value="add"></td>
+            </tr>
+        </table>
+    </form>
+
+    <form id="update-user">
+        <h1 th:text="#{user.formUpdate}">Form update</h1>
+        <table>
+            <tr>
+                <td th:text="#{user.name}"><label for="update-name">Name: </label></td>
+                <td><input type="text" id="update-name" th:placeholder="#{user.name}"></td>
+            </tr>
+            <tr>
+                <td th:text="#{user.address}"><label for="update-address" >Address :</label></td>
+                <td><input type="text" id="update-address" placeholder="address"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" th:value="#{user.update}" data-value="#{user.update}"></td>
+            </tr>
+        </table>
+    </form>
+
+    <h1 id="title" th:text="#{user.list}">List user</h1>
+    <div id="div-btn">
+        Language: <a href="?lang=en">English</a> | <a href="?lang=vi">Vietnamese</a>
+    </div>
+
+    <div id="div-btn">
+        <button onclick="successHandler()" id="display" th:text="#{user.display}">Display list user</button>
+        <button onclick="displayFormCreate()" id="display-create" th:text="#{user.createNew}" data-text="#{user.createNew}">Create new user</button>
+    </div>
+    <div id="userList"></div>
+</body>
+</html>

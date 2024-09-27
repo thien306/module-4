@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head"></head>
+<body>
+<h3>Add Blog</h3>
+<p>
+    <a th:href="@{/blogs}">
+        Back to blog list
+    </a>
+</p>
+<div class="mb-3">
+    <form th:action="@{/blogs/save}" th:object="${blog}" method="POST" novalidate="novalidate">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label>Tên Blog</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Tên Blog" th:field="*{name}" required/>
+        </div>
+        <div>
+            <label>Tên Blogger</label>
+            <input type="text" class="form-control" placeholder="Tên Blogger" aria-label="Username" aria-describedby="basic-addon1" th:field="*{bloggerName}" required/>
+        </div>
+        <div>
+            <label>Ngày Tạo</label>
+            <input type="date" th:field="*{dayWrite}" required/>
+        </div>
+        <div class="input-group-text">
+            <label>Nội Dung</label>
+            <textarea class="form-control" aria-label="With textarea" th:field="*{content}" required></textarea>
+        </div>
+        <input type="submit" value="Lưu"/>
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
